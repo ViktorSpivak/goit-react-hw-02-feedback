@@ -18,21 +18,22 @@ export class Feedback extends Component {
     bad: 0
   };
 
-  changeFeedbackGood = () => {
-    this.setState(state => ({
-      good: state.good + this.props.step
-    }));
+  handleChangeFeedback = ev => {
+    const buttonName = ev.target.name;
+    buttonName === "bad" &&
+      this.setState(state => ({
+        bad: state.bad + this.props.step
+      }));
+    buttonName === "neutral" &&
+      this.setState(state => ({
+        neutral: state.neutral + this.props.step
+      }));
+    buttonName === "good" &&
+      this.setState(state => ({
+        good: state.good + this.props.step
+      }));
   };
-  changeFeedbackNeutral = () => {
-    this.setState(state => ({
-      neutral: state.neutral + this.props.step
-    }));
-  };
-  changeFeedbackBad = () => {
-    this.setState(state => ({
-      bad: state.bad + this.props.step
-    }));
-  };
+
   countTotalFeedback = () =>
     this.state.good + this.state.neutral + this.state.bad;
   countPositiveFeedbackPercentage = () =>
@@ -43,16 +44,10 @@ export class Feedback extends Component {
     );
   render() {
     const { good, neutral, bad } = this.state;
-    const changeFeedback = [
-      this.changeFeedbackGood,
-      this.changeFeedbackNeutral,
-      this.changeFeedbackBad
-    ];
-
     return (
       <div>
         <Section title="Please leave feedback">
-          <FeedbackOptions onLeaveFeedback={changeFeedback} />
+          <FeedbackOptions onLeaveFeedback={this.handleChangeFeedback} />
         </Section>
         <Section title="Statistics">
           {good === 0 && neutral === 0 && bad === 0 ? (
