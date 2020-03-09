@@ -1,5 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Feedback from "./components/Feedback";
+import App from "./components/App";
 
-ReactDOM.render(<Feedback />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));

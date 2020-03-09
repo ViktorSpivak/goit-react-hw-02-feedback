@@ -5,7 +5,7 @@ import FeedbackOptions from "./FeedbackOptions";
 import StatisticsData from "./StatisticData";
 import Notification from "./Notification";
 
-export class Feedback extends Component {
+export class App extends Component {
   static defaultProps = {
     step: 1
   };
@@ -67,4 +67,4 @@ export class Feedback extends Component {
   }
 }
 
-export default Feedback;
+export default App;
